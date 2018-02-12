@@ -28,15 +28,17 @@ namespace eyemove
         {
             this.InitializeComponent();
             buttonCursor = new CoreCursor(CoreCursorType.Hand, 0);
-        }
+    }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("done");
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("nope");
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
+
+
         }
         private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
