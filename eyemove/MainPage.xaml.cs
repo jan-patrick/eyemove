@@ -18,7 +18,7 @@ using Windows.UI.Core;
 namespace eyemove
 {
     /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
+    /// Should set mouse position.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -28,16 +28,21 @@ namespace eyemove
         {
             this.InitializeComponent();
             buttonCursor = new CoreCursor(CoreCursorType.Hand, 0);
-    }
+        }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            MediaElement mediaElement = new MediaElement();
-            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("nope");
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
+            //MediaElement mediaElement = new MediaElement();
+            //var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+            //Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("nope");
+            //mediaElement.SetSource(stream, stream.ContentType);
+            //mediaElement.Play();
 
+            // get the current mouse position
+            var pointerPosition = CoreWindow.GetForCurrentThread().PointerPosition;
+            var x = pointerPosition.X;
+            var y = pointerPosition.Y;
+            System.Diagnostics.Debug.WriteLine("X: "+ x + "  |  Y: " + y);
 
         }
         private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
